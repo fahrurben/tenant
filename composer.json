@@ -1,0 +1,10 @@
+{
+    "name": "kyrosoft/tenant",
+    "authors": [
+        {
+            "name": "Fahrur Razi",
+            "email": "fahrurben@gmail.com"
+        }
+    ],
+    "require": {}
+}
