@@ -3,6 +3,7 @@ namespace Kyrosoft\Tenant\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * User class
@@ -19,9 +20,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property \DateTime $updated_at
  * @property int $updated_by
  * @property \DateTime $deleted_at
+ *
+ * @mixin Builder
  */
 class User extends Model implements AuthenticatableContract
 {
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'user';
+
     /**
      * The attributes that are mass assignable.
      *
