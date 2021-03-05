@@ -1,9 +1,11 @@
 <?php
 namespace Kyrosoft\Tenant;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
+use Kyrosoft\Tenant\Repositories\UserRepository;
 
-class ServiceProvider extends IlluminateServiceProvider
+class CustomAuthServiceProvider extends IlluminateServiceProvider
 {
     /**
      * Register any application services.

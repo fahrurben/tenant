@@ -8,6 +8,18 @@
     ],
     "require": {},
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.9"
+        "barryvdh/laravel-ide-helper": "^2.9",
+        "orchestra/testbench": "v6.13.0",
+        "phpunit/phpunit": "^9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kyrosoft\\Tenant\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kyrosoft\\Tenant\\Tests\\": "tests"
+        }
     }
 }

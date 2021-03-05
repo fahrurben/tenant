@@ -1,7 +1,7 @@
 <?php
 namespace Kyrosoft\Tenant\Models;
 
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Builder;
  *
  * @mixin Builder
  */
-class User extends Model implements AuthenticatableContract
+class User extends Model implements Authenticatable
 {
     /**
      * The table associated with the model.
@@ -72,7 +72,7 @@ class User extends Model implements AuthenticatableContract
      */
     public function getAuthIdentifier()
     {
-        $this->id;
+        return $this->id;
     }
 
     /**

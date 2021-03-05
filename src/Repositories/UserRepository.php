@@ -27,7 +27,7 @@ class UserRepository
             ->first();
     }
 
-    public function updateRememberMeToken($id, $token): void
+    public function updateRememberMeToken(int $id, string $token): void
     {
         $user = $this->findById($id);
 

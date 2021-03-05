@@ -2,11 +2,11 @@
 namespace Kyrosoft\Tenant\Providers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\UserProvider as IlluminateUserProvider;
+use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Support\Facades\Hash;
 use Kyrosoft\Tenant\Repositories\UserRepository;
 
-class UserProvider implements IlluminateUserProvider
+class CustomUserProvider implements UserProvider
 {
     /**
      * @var UserRepository $userRepository
@@ -15,7 +15,6 @@ class UserProvider implements IlluminateUserProvider
 
     /**
      * UserProvider constructor.
-     * @param UserRepository $userRepository
      */
     public function __construct(UserRepository $userRepository)
     {
@@ -54,7 +53,7 @@ class UserProvider implements IlluminateUserProvider
      */
     public function updateRememberToken(Authenticatable $user, $token)
     {
-        $this->updateRememberToken($user->getAuthIdentifier(), $token);
+        $this->userRepository->updateRememberMeToken($user->getAuthIdentifier(), $token);
     }
 
     /**
