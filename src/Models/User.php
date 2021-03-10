@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * User class
  * @property int $id
- * @property int $tenant_id
  * @property string $email
  * @property string $password
  * @property string $first_name
@@ -38,7 +37,6 @@ class User extends Model implements Authenticatable
      * @var array
      */
     protected $fillable = [
-        'tenant_id',
         'email',
         'password',
         'first_name',
@@ -54,6 +52,11 @@ class User extends Model implements Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function tenants()
+    {
+        return $this->belongsToMany(Tenant::class, 'tenant_user', 'user_id', 'tenant_id');
+    }
 
     /**
      * Get the name of the unique identifier for the user.

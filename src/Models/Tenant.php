@@ -33,4 +33,9 @@ class Tenant extends Model
         'name',
         'sub_domain',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

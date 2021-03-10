@@ -1,8 +1,8 @@
 <?php
 namespace Kyrosoft\Tenant\Tests;
 
-use Kyrosoft\Tenant\Providers\CustomUserProvider;
-use Kyrosoft\Tenant\CustomAuthServiceProvider;
+use Kyrosoft\Tenant\Models\User;
+use Kyrosoft\Tenant\MultitenancyServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -21,9 +21,10 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            CustomAuthServiceProvider::class
+            MultitenancyServiceProvider::class
         ];
     }
+
     /**
      * Define environment setup.
      *
@@ -38,6 +39,10 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'driver'   => 'sqlite',
             'database' => ':memory:',
             'prefix'   => '',
+        ]);
+        $app['config']->set('auth.providers.users', [
+            'model' => User::class,
+            'driver' => 'custom_user',
         ]);
     }
 }

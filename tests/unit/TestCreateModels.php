@@ -26,12 +26,15 @@ class TestCreateModels extends TestCase
         $this->assertNotNull($tenant);
 
         $user = User::create([
-            'tenant_id' => $tenant->id,
             'email' => 'admin@test.com',
             'password' => Hash::make('admin'),
             'first_name' => 'John',
             'last_name' => 'Doe',
         ]);
         $this->assertNotNull($user);
+
+        $tenant->users()->attach($user);
+
+        $this->assertEquals(1, count($tenant->users));
     }
 }
